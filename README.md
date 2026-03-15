@@ -1,20 +1,64 @@
-# StrayAnimal
-基于 Spring Boot + AI 的智能宠物领养与管理平台。集成 AI 实时问答与风险评估系统，通过智能化手段匹配领养需求，提升流浪动物领养效率与安全性。
-1. 项目愿景
-旨在通过技术手段解决宠物领养中的信息不对称和安全评估问题，为流浪动物寻找最合适的家庭。
+# 🐾 Smart Pet Platform | 智能宠物领养与管理平台
 
-2. 核心功能
-智能领养推荐：基于用户画像和偏好，利用算法推荐匹配度最高的宠物。
+本项目是一个基于 **Spring Boot 3** 与 **Vue 3** 开发的前后端分离宠物领养系统。不同于传统的领养平台，本项目集成了 **AI 大模型能力**，旨在通过智能化手段提升流浪动物的领养匹配率与安全性。
 
-AI 实时问答助手：集成大模型能力，为领养者提供即时的养育咨询与政策解答。
+## 🌟 核心亮点
 
-AI 后台风险评估：通过多维度数据建模，自动评估领养申请人的潜在风险，辅助审核决策。
+* **🤖 AI 助手实时问答**：集成 DeepSeek 大模型，为用户提供 24/7 的养宠咨询、政策解读及领养引导。
+* **⚖️ AI 后台风险评估**：利用 AI 对领养申请人的背景描述、领养动机进行多维度分析，自动生成风险评分与审核建议，辅助管理人员决策。
+* **🎯 智能匹配推荐**：基于用户偏好画像，算法自动推荐最契合的宠物，提高领养成功率。
+* **📱 全流程闭环管理**：涵盖从宠物入库、领养申请、AI 风险评估到最终审核、回访的完整生命周期。
 
-全流程领养追踪：涵盖申请、审核、回访的完整生命周期管理。
+## 🛠️ 技术栈
 
-3. 技术栈
-后端：Java 17 / Spring Boot 3 / MySQL / MyBatis-Plus / Redis
+### 后端 (Backend)
 
-AI 集成：Spring AI / LangChain4j (或你使用的具体 API)
+* **核心框架**：Spring Boot 3.x
+* **数据库**：MySQL 8.0 + MyBatis-Plus
+* **缓存与中间件**：Redis (数据缓存) + RabbitMQ (异步消息)
+* **AI 集成**：Spring AI / HTTP Client (DeepSeek API)
 
-安全与中间件：Spring Security / RabbitMQ
+### 前端 (Frontend)
+
+* **框架**：Vue 3 (Composition API)
+* ** UI 组件库**：Element Plus
+* **状态管理**：Pinia
+
+## 📁 目录结构
+
+```text
+├── pet-backend     # 后端 Spring Boot 源码
+├── pet-frontend    # 前端 Vue 3 源码
+├── sql             # 数据库初始化脚本
+└── README.md       # 项目说明文档
+
+```
+
+## 🚀 快速启动
+
+### 1. 数据库准备
+
+* 在 MySQL 中创建数据库 `stray_animal`。
+* 依次执行 `sql/` 目录下的 `.sql` 文件以初始化表结构及基础数据。
+
+### 2. 后端配置
+
+* 进入 `pet-backend/src/main/resources/`。
+* 将 `application.yml` 中的数据库、Redis、RabbitMQ 密码及 `deepseek.api-key` 配置为你的真实信息（推荐使用环境变量）。
+
+### 3. 前端启动
+
+```bash
+cd pet-frontend
+npm install
+npm run dev
+
+```
+
+## 📝 开发路线 (Roadmap)
+
+* [x] 核心领养流程实现
+* [x] DeepSeek AI 助手接入
+* [x] AI 风险评估算法建模
+* [ ] 领养后的在线回访社区
+* [ ] 宠物健康档案电子化
