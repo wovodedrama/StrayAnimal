@@ -1,0 +1,424 @@
+/* 设置全局默认字体为黑体 */
+html, body, #app {
+  font-family: "SimHei", "STHeiti", "Microsoft YaHei", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 针对 Element UI 的一些组件做覆盖，确保它们也遵循全局黑体 */
+.el-button, .el-input, .el-select, .el-dialog, .el-table {
+  font-family: inherit !important;
+}
+
+h2 {
+    font-family: '黑体';
+}
+
+h3 {
+    font-family: '黑体';
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 设置Element UI组件的z-index */
+/* .el-dialog__wrapper {
+    z-index: 2500 !important;
+}
+
+.el-message {
+    z-index: 3000 !important;
+}
+
+.el-select-dropdown {
+    z-index: 2100 !important;
+}
+
+.el-dropdown-menu {
+    z-index: 2100 !important;
+}
+
+.v-modal {
+    z-index: 2400 !important;
+} */
+
+body {
+    color: #888;
+}
+
+.ml-5 {
+    margin-left: 5px;
+}
+
+.mr-5 {
+    margin-right: 5px;
+}
+
+.pd-10 {
+    padding: 10px 0;
+}
+
+.m-10 {
+    margin: 10px 0;
+}
+
+a {
+    text-decoration: none;
+    color: #666;
+}
+
+b {
+    color: #5d4037;
+    font-family: '黑体';
+}
+
+span {
+    font-family: '黑体';
+}
+
+.confirm-btn {
+    background: linear-gradient(135deg, #ff9f43, #ff6b6b);
+    font-family: 'Microsoft YaHei';
+    border: none;
+    border-radius: 6px;
+    padding: 10px 25px;
+    margin-top: 5px;
+    letter-spacing: 1px;
+
+    &:hover {
+        opacity: 0.9;
+        transform: translateY(-1px);
+    }
+}
+
+/* 新增容器样式 */
+.home-container {
+    min-height: 100vh;
+    background: #FFFBF0;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.particles-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.main-content {
+    position: relative;
+    z-index: 2;
+    padding: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* 表格样式增强 */
+::v-deep .modern-table {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+
+    .el-table__header {
+        th {
+            background: linear-gradient(135deg, #ff9f43, #ff6b6b) !important;
+            color: white;
+            font-size: 16px;
+            font-weight: 500;
+        }
+    }
+
+    .el-table__row {
+        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.95);
+
+        &:hover {
+            transform: translateX(5px);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        td {
+            padding: 12px 0;
+        }
+    }
+}
+
+/* 分页样式 */
+.pagination-wrapper {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 20px;
+
+    ::v-deep .modern-pagination {
+        .btn-prev, .btn-next {
+            border-radius: 20px;
+            padding: 0 15px;
+            border: 1px solid #eee;
+            transition: all 0.3s ease;
+
+            &:hover {
+                background: #ff9f43;
+                color: white;
+            }
+        }
+
+        .el-pager {
+            li {
+                border-radius: 8px;
+                margin: 0 5px;
+                background: transparent;
+                transition: all 0.3s ease;
+
+                &.active {
+                    background: linear-gradient(135deg, #ff9f43, #ff6b6b);
+                    color: white;
+                }
+
+                &:hover {
+                    background: rgba(102, 126, 234, 0.1);
+                }
+            }
+        }
+    }
+}
+
+.modern-table {
+    margin: 20px 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+
+    .el-table__header th {
+        background-color: #f8f9fa;
+        color: #495057;
+        font-weight: 600;
+    }
+
+    .el-table__row:hover td {
+        background-color: #f8f9fa !important;
+    }
+
+    .el-table__cell {
+        padding: 12px 0;
+    }
+}
+.user-management-container {
+    padding: 20px;
+    background: #faf9f6;
+    border-radius: 8px;
+}
+
+.modern-dialog {
+    border-radius: 12px !important;
+
+    .el-dialog {
+        border-radius: 12px;
+        .el-dialog__header {
+            border-bottom: 1px solid #e9ecef;
+            background: linear-gradient(135deg, #ff9f43, #ff6b6b);
+            padding: 18px 25px;
+
+            .el-dialog__title {
+                color: white !important;
+                font-size: 20px;
+                letter-spacing: 1px;
+            }
+
+            .el-dialog__headerbtn {
+                top: 22px;
+
+                .el-dialog__close {
+                    color: white;
+                }
+            }
+        }
+
+        & __body {
+            padding: 20px;
+        }
+
+        & __footer {
+            border-top: 1px solid #e9ecef;
+            padding: 15px 20px;
+        }
+    }
+
+    .modern-input {
+        .el-form-item__label {
+            color: #495057;
+            font-weight: 500;
+            padding-right: 20px;
+        }
+
+        .el-input__inner {
+            border-radius: 6px;
+            transition: all 0.3s ease;
+
+            &:focus {
+                border-color: #4dabf7;
+                box-shadow: 0 0 0 3px rgba(77, 171, 247, 0.1);
+            }
+        }
+    }
+    @media (max-width: 768px) {
+        .modern-dialog {
+            .el-dialog {
+                width: 90% !important;
+            }
+
+            .el-form-item {
+                margin-bottom: 15px;
+            }
+        }
+
+        .modern-table {
+            .el-table__cell {
+                padding: 8px 0;
+            }
+        }
+    }
+    .modern-editor {
+        border-radius: 8px;
+        border: 1px solid #e2e8f0;
+        min-height: 400px;
+
+        .v-note-wrapper {
+            border-radius: 8px !important;
+            z-index: 1;
+        }
+    }
+
+    .modern-btn {
+        border-radius: 8px;
+        padding: 12px 25px;
+        border: 1px solid #e2e8f0;
+        transition: all 0.3s ease;
+
+        &.primary {
+            background: linear-gradient(135deg, #ff9f43, #ff6b6b);
+            border: none;
+            color: white;
+
+            &:hover {
+                box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+            }
+        }
+    }
+
+    .dialog-footer {
+        .dialog-cancel-btn {
+            background: #f8f9fa;
+            color: #718096;
+
+            &:hover {
+                background: #edf2f7;
+            }
+        }
+
+        .dialog-confirm-btn {
+            background: linear-gradient(135deg, #ff9f43, #ff6b6b);
+            border: none;
+
+            &:hover {
+                opacity: 0.9;
+            }
+        }
+    }
+}
+
+.preview-dialog {
+    .modern-preview {
+        .v-note-wrapper.markdown-body {
+            background: #f8fafc !important;
+            border-radius: 8px;
+        }
+    }
+
+    .comment-section {
+        margin-top: 30px;
+
+        .section-title {
+            color: #4a5568;
+            border-bottom: 2px solid #ff9f43;
+            padding-bottom: 12px;
+
+            i {
+                margin-right: 8px;
+            }
+        }
+
+        .comment-item {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+
+            .user-info {
+                display: flex;
+                align-items: center;
+                position: relative;
+
+                .user-avatar {
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    margin-right: 15px;
+                }
+
+                .meta-info {
+                    .username {
+                        color: #3F5EFB;
+                        font-weight: 500;
+                    }
+
+                    .post-time {
+                        color: #718096;
+                        font-size: 12px;
+                        margin-left: 15px;
+                    }
+                }
+
+                .delete-btn {
+                    position: absolute;
+                    right: 0;
+                    color: #fc8181;
+
+                    &:hover {
+                        color: #f56565;
+                    }
+                }
+            }
+
+            .comment-content {
+                color: #4a5568;
+                margin-top: 10px;
+                line-height: 1.6;
+            }
+        }
+    }
+}
+
+.comment-dialog {
+    .modern-textarea {
+        .el-textarea__inner {
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            padding: 15px;
+            font-size: 14px;
+            line-height: 1.6;
+
+            &:focus {
+                border-color: #ff9f43;
+                box-shadow: 0 2px 8px rgba(102, 126, 234, 0.2);
+            }
+        }
+    }
+}

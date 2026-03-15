@@ -1,0 +1,13 @@
+# 后端屏蔽
+pet-backend/target/
+pet-backend/src/main/resources/application-dev.yml
+pet-backend/files/
+
+# 前端屏蔽
+pet-frontend/node_modules/
+pet-frontend/dist/
+
+# 通用屏蔽
+.idea/
+*.iml
+.DS_Store
