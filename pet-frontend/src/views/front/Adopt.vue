@@ -159,7 +159,6 @@
 
 <script>
 
-
 export default {
   name: "FrontHome",
   data() {
@@ -270,34 +269,84 @@ export default {
       if (!this.inputText.trim()) return;
 
       const question = this.inputText;
+      const baseUrl = process.env.VUE_APP_BASE_URL;
+
       if (question.length > 500) {
-        return Result.error("输入内容过长，请简要描述问题")
+        return console.error("输入内容过长，请简要描述问题")
       }
+      // 1. 问题显示到屏幕上
       this.messages.push({
         role: 'user',
         content: question
       });
       this.inputText = ''
-
       this.loading = true
-      // axios调用后端/ai/chat
-      try {
-        const res = await this.request.post('/ai/chat', {
-          message: question
-        });
-        // 获取返回结果并显示
-        this.messages.push({
-          role: 'ai',
-          content: res.data
-        })
-      } catch (e) {
-        this.messages.push({
-          role:'ai',
-          content: '出错了，请稍后重试'
-        })
-      } finally {
-        this.loading  = false
+
+      // 2. 预先在数组里放个空的 AI 消息对象
+      const aiMsg = {
+        role: 'ai',
+        content: ''
       }
+      this.messages.push(aiMsg)
+
+      // 3. 调用后端接口
+      try {
+        const res = await fetch(`${baseUrl}/ai/chat`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'token': JSON.parse(localStorage.getItem('user')).token
+          },
+          body: JSON.stringify({ message: question })
+        });
+
+        if (!res.ok) throw new Error('网络请求错误')
+
+        // 4. 获取读取器
+        const reader = res.body.getReader();
+        const decoder = new TextDecoder();
+        
+        // 关闭思考中状态
+        this.loading = false
+        
+        while (true) {
+          const { done, value } = await reader.read()
+          if (done) break;
+
+          // 5. 解码数据片段
+          const chunk = decoder.decode(value, { stream: true })
+
+          // 处理 SSE 的 data: 格式
+          // 1. 使用正则表达式匹配所有 data: 后面的内容
+          const regex = /data:(.*)\n?/g;
+          let match;
+
+
+          while ((match = regex.exec(chunk)) !== null) {
+            const content = match[1];
+            if (content) {
+              aiMsg.content += content;
+            }
+          }
+        }
+      } catch (e) {
+        console.error(e);
+        aiMsg.content = '出错了，请稍后重试';
+        this.loading = false;
+      }
+      //   // 获取返回结果并显示
+      //   this.messages.push({
+      //     role: 'ai',
+      //     content: res.data
+      //   })
+      // } catch (e) {
+      //   this.messages.push({
+      //     role:'ai',
+      //     content: '出错了，请稍后重试'
+      //   })
+      // } finally {
+      //   this.loading  = false
+      // }
     }
   }
 }
